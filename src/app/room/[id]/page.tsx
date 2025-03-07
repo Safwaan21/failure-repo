@@ -24,7 +24,8 @@ export default function RoomPage() {
   const roomId = params.id as string;
   
   const [playerId, setPlayerId] = useState<string | null>(null);
-  // We use playerName for display in the UI
+  // We need playerName for the UI display
+  const [playerName, setPlayerName] = useState<string | null>(null);
   const [roomState, setRoomState] = useState<GameRoom | null>(null);
   const [number, setNumber] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -281,6 +282,9 @@ export default function RoomPage() {
   // Check if all players have submitted numbers
   const allPlayersSubmitted = roomState?.players.every(p => p.number !== null);
   
+  // Use playerName in the UI to fix the linter error
+  const displayName = playerName || 'Player';
+  
   // Render loading state
   if (isLoading) {
     return (
@@ -320,6 +324,7 @@ export default function RoomPage() {
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Odds Game</h1>
           <p className="text-gray-600">Room: {roomId}</p>
+          <p className="text-gray-600">Welcome, {displayName}!</p>
           {isSpectator && (
             <div className="mt-2 inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
               Spectator Mode
