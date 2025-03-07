@@ -25,7 +25,6 @@ export default function RoomPage() {
   
   const [playerId, setPlayerId] = useState<string | null>(null);
   // We use playerName for display in the UI
-  const [playerName, setPlayerName] = useState<string | null>(null);
   const [roomState, setRoomState] = useState<GameRoom | null>(null);
   const [number, setNumber] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
